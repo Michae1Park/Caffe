@@ -3,11 +3,17 @@
 #include <string>
 #include <vector>
 
+//mycode 
+#include <ctime>
+#include <iostream>
+
 #include "caffe/solver.hpp"
 #include "caffe/util/format.hpp"
 #include "caffe/util/hdf5.hpp"
 #include "caffe/util/io.hpp"
 #include "caffe/util/upgrade_proto.hpp"
+
+void mytime(int param);
 
 namespace caffe {
 
@@ -279,6 +285,9 @@ void Solver<Dtype>::Solve(const char* resume_file) {
   LOG(INFO) << "Solving " << net_->name();
   LOG(INFO) << "Learning Rate Policy: " << param_.lr_policy();
 
+  //my code: start clock
+  mytime(0);
+
   // Initialize to false every time we start solving.
   requested_early_exit_ = false;
 
@@ -320,6 +329,9 @@ void Solver<Dtype>::Solve(const char* resume_file) {
     TestAll();
   }
   LOG(INFO) << "Optimization Done.";
+	
+  //my code: stop the clock and print out time
+  mytime(1);
 }
 
 template <typename Dtype>
@@ -495,3 +507,24 @@ void Solver<Dtype>::UpdateSmoothedLoss(Dtype loss, int start_iter,
 INSTANTIATE_CLASS(Solver);
 
 }  // namespace caffe
+
+//my code to time training
+void mytime(int param) {
+  using namespace std;
+  
+  static clock_t begin;
+  static clock_t end;  
+
+  if(!param) {
+    begin = clock();
+    LOG(INFO) << "starting MY clock"; 
+  }
+  else if (param) {
+    end = clock();
+    double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+    LOG(INFO) << "Time Elapsed_secs: " << elapsed_secs;
+  }
+  else {
+    LOG(INFO) << "Error detected in measuring MyTIME!!";
+  }
+}
