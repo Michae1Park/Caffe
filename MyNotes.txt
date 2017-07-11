@@ -1,0 +1,12 @@
+<Notes for caffe code & concept analysis -- will update useful ones to my page later>
+
+Caffe structure (conceptual) : 
+	-network is defined as bottom-to-top model from input data to loss
+	-forward and backward passes in Caffe stores, communicates, and manipulates, information as blobs. 
+
+Blob: standard array (N dimensional) and unified memory interface for caffe that is used to 
+
+
+Batch: one training set - could be 1 image, multiple images, or in linear regression, all dots on the graph
+
+repmat (A, x, y) - copies elements in A x times in row and y times in column

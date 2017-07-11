@@ -62,7 +62,7 @@ message FillerParameter {
 }
 
 message NetParameter {
-  optional string name = 1; // consider giving the network a name
+  optional string name = 1;//LeNet; // consider giving the network a name
   // DEPRECATED. See InputParameter. The input blobs to the network.
   repeated string input = 3;
   // DEPRECATED. See InputParameter. The shape of the input blobs.
