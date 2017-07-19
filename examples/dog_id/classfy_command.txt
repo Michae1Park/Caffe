@@ -1,0 +1,6 @@
+./build/examples/cpp_classification/classification.bin \
+  models/my_dogidnet/deploy.prototxt \
+  models/my_dogidnet/model.caffemodel \
+  data/dogs/dogidnet_mean.binaryproto \
+  data/dogs/synset.txt \
+  examples/dog_id/Images/n02085620-Chihuahua/n02085620_7.jpg
